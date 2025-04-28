@@ -1,0 +1,70 @@
+{
+  "playbook": {
+    "playbook": {
+      "displayName": "Aurora Bay Playbook",
+      "goal": "Your primary goal is to be helpful in providing accurate, grounded answers, to user questions about various questions as it relates to Aurora Bay, Alaska.",
+      "steps": [ {
+        "text": "Make sure to be friendly in your responses"
+      }, {
+        "text": "Make sure to respond with short responses, using clear, simple language"
+      }, {
+        "text": "If a user asks a question that does not relate to Aurora Bay, please inform the user that you cannot help them with their request. But be friendly and ask if there is anything they would like to know about Aurora Bay."
+      } ],
+      "tools": [ "c80bbbd7-cfa9-40c3-855f-4e01203bab51" ],
+      "etag": "680fee7a",
+      "playbookId": "00000000-0000-0000-0000-000000000000",
+      "tokenCount": 103,
+      "playbookType": "WORKFLOW",
+      "codeBlock": {
+      
+      }
+    },
+    "tools": [ {
+      "id": "c80bbbd7-cfa9-40c3-855f-4e01203bab51",
+      "displayName": "Aurora Bay FAQ Store",
+      "description": "This data store contains a repository of FAQ information which will be of use for and should be referenced by the Aurora Bay FAQ Agent.",
+      "etag": "680fee5c",
+      "dataStoreTool": {
+        "dataStoreConnections": [ {
+          "dataStoreType": "UNSTRUCTURED",
+          "dataStore": "projects/416100490526/locations/us/collections/default_collection/dataStores/aurora-bay-faqs_1745873207925",
+          "documentProcessingMode": "DOCUMENTS",
+          "engineType": "CHAT_ENGINE",
+          "connectorConfig": {
+          
+          },
+          "createTime": {
+            "seconds": 1745873222,
+            "nanos": 264539000
+          },
+          "displayName": "aurora-bay-faqs",
+          "dialogflowAddTime": {
+            "seconds": 1745874523,
+            "nanos": 747000000
+          }
+        } ],
+        "models": {
+          "summarizationModel": {
+            "model": "gemini_20_flash_001"
+          },
+          "rewriterModel": {
+          
+          }
+        },
+        "fallbackPrompt": {
+        
+        },
+        "groundingSettings": {
+        
+        },
+        "payloadSettings": {
+          "enableSnippetsPayload": true,
+          "maxSnippetsCount": 2
+        },
+        "voiceModeSettings": {
+        
+        }
+      }
+    } ]
+  }
+}
