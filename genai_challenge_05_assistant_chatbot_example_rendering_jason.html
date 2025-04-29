@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alaska Snow Department Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 600px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #007BFF;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #output-area {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Alaska Snow Department Chatbot</h2>
+        <label for="question">Question:</label>
+        <textarea id="question" placeholder="Enter your question..."></textarea>
+        <br>
+        <button onclick="submitQuestion()">Submit</button>
+        <div id="output-area"></div>
+    </div>
+
+    <script>
+        async function submitQuestion() {
+            var question = document.getElementById("question").value;
+            var outputArea = document.getElementById("output-area");
+
+            outputArea.innerText = "Loading..."; // Show loading message
+
+            try {
+                // Send the question to the Colab backend
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ question: question })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                outputArea.innerText = data.response; // Display the response
+            } catch (error) {
+                console.error('Error:', error);
+                outputArea.innerText = "Error: Could not get response from the server.";
+            }
+        }
+    </script>
+</body>
+</html>
